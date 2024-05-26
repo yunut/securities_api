@@ -3,6 +3,8 @@
 
 해당 레포지토리는 비즈니스 로직을 처리하는 레포지토리 입니다.
 
+https://vine-honesty-22f.notion.site/13ef77777eef4cd5a2d917064fd28f7d?pvs=4
+
 ## 실행방법
 
 1. docker 설치
