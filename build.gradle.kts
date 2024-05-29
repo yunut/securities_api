@@ -5,6 +5,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.5"
     kotlin("jvm") version "1.9.24"
     kotlin("plugin.spring") version "1.9.24"
+    kotlin("plugin.serialization") version "1.9.24"
 
     kotlin("kapt") version "1.7.10"
 }
@@ -18,6 +19,8 @@ java {
 
 repositories {
     mavenCentral()
+    maven(url = "https://jitpack.io")
+
 }
 
 dependencies {
@@ -34,6 +37,11 @@ dependencies {
     annotationProcessor(
         "org.springframework.boot:spring-boot-configuration-processor",
     )
+
+
+    // telegram bot
+    implementation("io.github.kotlin-telegram-bot.kotlin-telegram-bot:telegram:6.1.0")
+
 
     // for json(need for kotlin data class parsing)
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
