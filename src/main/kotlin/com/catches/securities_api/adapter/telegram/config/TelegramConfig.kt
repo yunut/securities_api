@@ -1,4 +1,4 @@
-package com.catches.securities_api.adapter.out.telegram.config
+package com.catches.securities_api.adapter.telegram.config
 
 import jakarta.annotation.PostConstruct
 import org.springframework.context.annotation.Configuration
