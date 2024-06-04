@@ -29,6 +29,7 @@ data class BondController(
                 BondResponse(
                     bondName = it!!.bondName,
                     surfaceInterestRate = it.surfaceInterestRate.setScale(2, RoundingMode.DOWN).toDouble(),
+                    issuerName = it.issuerName,
                     issueDate = it.issueDate.toString(),
                     expiredDate = it.expiredDate.toString(),
                     interestChange = it.interestChange

@@ -18,6 +18,7 @@ class BondPersistenceAdapter(
                 BondSimpleDto(
                     bondName = it.isinCodeName,
                     surfaceInterestRate = it.surfaceInterestRate,
+                    issuerName = it.issuer.name,
                     issueDate = it.issueDate,
                     expiredDate = it.expiredDate,
                     interestChange = it.interestChange.name,
