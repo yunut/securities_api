@@ -10,4 +10,7 @@ data class BondSimpleDto(
     val issueDate: LocalDate, // 발행일
     val expiredDate: LocalDate, // 만기일
     val interestChange: String, // 금리 변동 구분
+    val interestType: String, // 이자 유형
+    val price: BigDecimal, // 종가
+    val priceDate: String, // 종가 일자
 )

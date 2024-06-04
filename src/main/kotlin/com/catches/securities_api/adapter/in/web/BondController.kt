@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
+import java.math.BigDecimal
 import java.math.RoundingMode
 
 @RestController
@@ -32,7 +33,10 @@ data class BondController(
                     issuerName = it.issuerName,
                     issueDate = it.issueDate.toString(),
                     expiredDate = it.expiredDate.toString(),
-                    interestChange = it.interestChange
+                    interestChange = it.interestChange,
+                    interestType = it.interestType,
+                    price = it.price.toInt(),
+                    priceDate = it.priceDate
                 )
             }
         )

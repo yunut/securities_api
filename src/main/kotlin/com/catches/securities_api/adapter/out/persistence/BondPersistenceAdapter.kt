@@ -22,6 +22,13 @@ class BondPersistenceAdapter(
                     issueDate = it.issueDate,
                     expiredDate = it.expiredDate,
                     interestChange = it.interestChange.name,
+                    interestType = it.interestType.name,
+                    price = it.price?: 0.toBigDecimal(),
+                    priceDate = it.pricedDate.let { date ->
+                        date?.let {
+                            it.toString()
+                        } ?: ""
+                    }
                 )
             }
         }

@@ -10,4 +10,7 @@ data class BondResponse(
     val issueDate: String, // 발행일
     val expiredDate: String, // 만기일
     val interestChange: String, // 금리 변동 구분
+    val interestType: String, // 이자 유형
+    val price: Int, // 종가
+    val priceDate: String, // 종가 일자
 )
