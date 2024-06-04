@@ -6,6 +6,7 @@ plugins {
     kotlin("jvm") version "1.9.24"
     kotlin("plugin.spring") version "1.9.24"
     kotlin("plugin.serialization") version "1.9.24"
+    kotlin("plugin.jpa") version "1.9.24"
 
     kotlin("kapt") version "1.7.10"
 }
