@@ -54,7 +54,8 @@ data class BondController(
                         BondRankResponseBody(
                             name = bond.name,
                             surfaceInterestRate = bond.surfaceInterestRate,
-                            expiredDate = bond.expiredDate
+                            expiredDate = bond.expiredDate,
+                            grade = bond.grade
                         )
                     }
                 )

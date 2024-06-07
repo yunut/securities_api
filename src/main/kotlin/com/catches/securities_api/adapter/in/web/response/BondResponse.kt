@@ -23,5 +23,6 @@ data class BondRankResponse(
 data class BondRankResponseBody(
     val name: String,
     val surfaceInterestRate: Double,
-    val expiredDate: String
+    val expiredDate: String,
+    val grade: String
 )
