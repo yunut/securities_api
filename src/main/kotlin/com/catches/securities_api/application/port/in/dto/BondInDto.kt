@@ -14,3 +14,11 @@ data class BondSimpleDto(
     val price: BigDecimal, // 종가
     val priceDate: String, // 종가 일자
 )
+
+data class BondRankInDto(
+    val bondName: String,
+    val surfaceInterestRate: BigDecimal,
+    val expiredDate: LocalDate,
+    val grade: String,
+    val rank: Int,
+)

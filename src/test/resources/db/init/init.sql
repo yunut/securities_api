@@ -62,3 +62,11 @@ CREATE TABLE user_bond_info(
     FOREIGN KEY(user_id) REFERENCES user(id),
     FOREIGN KEY(bond_id) REFERENCES bond(isin_code)
 );
+
+CREATE TABLE bond_grade_rank (
+    grade VARCHAR(5) not null, -- 기업 신용등급,
+    rank tinyint(1) not null, -- grade 별 랭킹
+    isin_code VARCHAR(12) PRIMARY KEY NOT NULL, -- 법인등록번호,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL
+);

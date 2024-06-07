@@ -14,3 +14,14 @@ data class BondResponse(
     val price: Int, // 종가
     val priceDate: String, // 종가 일자
 )
+
+data class BondRankResponse(
+    val grade: String,
+    val bondList: List<BondRankResponseBody>,
+)
+
+data class BondRankResponseBody(
+    val name: String,
+    val surfaceInterestRate: Double,
+    val expiredDate: String
+)
