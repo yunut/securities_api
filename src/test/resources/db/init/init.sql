@@ -62,3 +62,16 @@ CREATE TABLE user_bond_info(
     FOREIGN KEY(user_id) REFERENCES user(id),
     FOREIGN KEY(bond_id) REFERENCES bond(isin_code)
 );
+
+CREATE TABLE pos_schedule (
+    id VARCHAR(36) NOT NULL,
+    pos_name VARCHAR(100) NOT NULL,
+    pos_start_date DATE NOT NULL,
+    pos_end_date DATE NOT NULL,
+    pos_confirmed_price INT DEFAULT NULL,
+    pos_desired_min_price INT NOT NULL,
+    pos_desired_max_price INT NOT NULL,
+    pos_competition_rate DECIMAL(10, 2) DEFAULT NULL,
+    pos_taken_company VARCHAR(100) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
