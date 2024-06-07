@@ -70,3 +70,16 @@ CREATE TABLE bond_grade_rank (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL
 );
+
+CREATE TABLE pos_schedule (
+    id VARCHAR(36) NOT NULL,
+    pos_name VARCHAR(100) NOT NULL,
+    pos_start_date DATE NOT NULL,
+    pos_end_date DATE NOT NULL,
+    pos_confirmed_price INT DEFAULT NULL,
+    pos_desired_min_price INT NOT NULL,
+    pos_desired_max_price INT NOT NULL,
+    pos_competition_rate DECIMAL(10, 2) DEFAULT NULL,
+    pos_taken_company VARCHAR(100) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
