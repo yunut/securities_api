@@ -63,6 +63,17 @@ CREATE TABLE user_bond_info(
     FOREIGN KEY(bond_id) REFERENCES bond(isin_code)
 );
 
+CREATE TABLE bond_grade_rank (
+    grade VARCHAR(5) not null, -- 기업 신용등급,
+    `rank` TINYINT not null, -- grade 별 랭킹
+    isin_code VARCHAR(12) PRIMARY KEY NOT NULL, -- 법인등록번호,
+    isin_code_name VARCHAR(100) NOT NULL, -- 국제 채권 식별 번호 명칭
+    surface_interest_rate DECIMAL(15,10) NOT NULL, -- 채권 표면 이자율
+    expired_date DATE NOT NULL, -- 채권 만기 일자
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL
+);
+
 CREATE TABLE pos_schedule (
     id VARCHAR(36) NOT NULL,
     pos_name VARCHAR(100) NOT NULL,
