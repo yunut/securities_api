@@ -1,12 +1,11 @@
 package com.catches.securities_api.adapter.out.persistence.repository
 
-import com.catches.securities_api.domain.Bond
+import com.catches.securities_api.domain.BondGradeRank
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface BondRepository: JpaRepository<Bond, String> {
+interface BondGradeRankRepository: JpaRepository<BondGradeRank, String> {
 
-    fun findByIsinCodeNameLike(name: String): List<Bond>?
-
+    fun findAllByOrderByGradeAscRankAsc(): List<BondGradeRank>
 }

@@ -1,6 +1,8 @@
 package com.catches.securities_api.adapter.out.persistence
 
+import com.catches.securities_api.adapter.out.persistence.repository.BondGradeRankRepository
 import com.catches.securities_api.adapter.out.persistence.repository.BondRepository
+import com.catches.securities_api.application.port.`in`.dto.BondRankInDto
 import com.catches.securities_api.application.port.out.BondPort
 import com.catches.securities_api.application.port.`in`.dto.BondSimpleDto
 import org.springframework.stereotype.Component
@@ -8,7 +10,8 @@ import java.lang.StringBuilder
 
 @Component
 class BondPersistenceAdapter(
-    private val bondRepository: BondRepository
+    private val bondRepository: BondRepository,
+    private val bondGradeRankRepository: BondGradeRankRepository
 ): BondPort {
 
     override fun getBondSimpleInfo(name: String): BondSimpleDto? {
@@ -31,6 +34,18 @@ class BondPersistenceAdapter(
                     }
                 )
             }
+        }
+    }
+
+    override fun getBondListGroupByGrade(): List<BondRankInDto> {
+        return bondGradeRankRepository.findAllByOrderByGradeAscRankAsc().map {
+            BondRankInDto(
+                bondName = it.isinCodeName,
+                surfaceInterestRate = it.surfaceInterestRate,
+                expiredDate = it.expiredDate,
+                grade = it.grade,
+                rank = it.rank
+            )
         }
     }
 }
