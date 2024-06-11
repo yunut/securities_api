@@ -23,7 +23,7 @@ data class BondController(
 
         return ResponseBody(
             meta = MetaBody(200, "Success"),
-            data = data.let {
+            data = data?.let {
                 BondResponse(
                     bondName = it!!.bondName,
                     surfaceInterestRate = it.surfaceInterestRate.setScale(2, RoundingMode.DOWN).toDouble(),
