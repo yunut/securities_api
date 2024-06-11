@@ -14,6 +14,15 @@ data class BondController(
     private val bondUseCase: BondUseCase,
 ) {
 
+    // TODO SearchBondList를 하여 채권 이름으로 검색 할수 있는 API로 처리해야 한다.
+    /**
+     * TODO
+     * flow
+     *  1. 채권 이름으로 like 검색을 하여 채권 이름 리스트를 가져온다.
+     *  2. 텔레그램 메시지에서 해당 리스트를 선택할수 있는 메시지를 보여준다.
+     *  3. 메시지가 선택이 되면 해당 채권에 대한 정보를 가져온다.
+     *  -> 등록도 채권을 먼저 검색하고 등록하도록 만들어야 할것 같다.
+     */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/bond")
     fun getBondList(
