@@ -59,4 +59,19 @@ class BondControllerTest: BehaviorSpec ({
             }
         }
     }
+    Given("등급별 공모주 조회 요청이 들어온 경우") {
+        When("등급별 공모주 조회 요청이 들어온 경우") {
+
+            every { bondUseCase.getBondListGroupByGrade() } returns listOf()
+
+            Then("200 OK와 데이터를 반환한다") {
+                mockMvc.perform(
+                    MockMvcRequestBuilders.get("/bond/list")
+                ).andExpect(MockMvcResultMatchers.status().isOk)
+                    .andReturn().response.contentAsString.let {
+                        objectMapper.readTree(it).get("data").isNull.shouldBe(false)
+                    }
+            }
+        }
+    }
 })
