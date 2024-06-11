@@ -4,6 +4,7 @@ import com.catches.securities_api.adapter.`in`.web.response.MetaBody
 import com.catches.securities_api.adapter.`in`.web.response.PosResponse
 import com.catches.securities_api.adapter.`in`.web.response.ResponseBody
 import com.catches.securities_api.application.port.`in`.PosUseCase
+import jakarta.validation.constraints.Pattern
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -19,6 +20,7 @@ class PosController(
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/pos")
     fun getPosSchedule(
+        @Pattern(regexp = "\\d{4}", message = "Year must be a four-digit number")
         @RequestParam("year") year: String
     ): ResponseBody {
         val data = posUseCase.getPosSchedule(year)
