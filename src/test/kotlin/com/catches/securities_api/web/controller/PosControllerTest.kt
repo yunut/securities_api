@@ -1,8 +1,8 @@
-package com.catches.securities_api.controller
+package com.catches.securities_api.web.controller
 
 import com.catches.securities_api.adapter.`in`.web.PosController
 import com.catches.securities_api.application.port.`in`.PosUseCase
-import com.catches.securities_api.controller.fixture.basePosDtoBuild
+import com.catches.securities_api.web.controller.fixture.basePosDtoBuild
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper

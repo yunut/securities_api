@@ -1,4 +1,4 @@
-package com.catches.securities_api.controller.fixture
+package com.catches.securities_api.web.controller.fixture
 
 import com.catches.securities_api.application.port.`in`.dto.PosDto
 import com.fasterxml.jackson.annotation.JsonFormat
