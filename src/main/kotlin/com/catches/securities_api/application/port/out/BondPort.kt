@@ -7,5 +7,7 @@ interface BondPort {
 
     fun getBondSimpleInfo(name: String): BondSimpleDto?
 
+    fun findBondList(name: String): List<BondSimpleDto>
+
     fun getBondListGroupByGrade(): List<BondRankInDto>
 }
