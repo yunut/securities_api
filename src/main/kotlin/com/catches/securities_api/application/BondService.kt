@@ -17,6 +17,10 @@ class BondService(
         return bondPort.getBondSimpleInfo(name)
     }
 
+    override fun searchBondList(name: String): List<BondSimpleDto> {
+        return bondPort.findBondList(name)
+    }
+
     override fun getBondListGroupByGrade(): List<BondRankOutDto> {
         val data = bondPort.getBondListGroupByGrade()
 

@@ -7,6 +7,8 @@ interface BondUseCase {
 
     fun getBondSimpleInfo(name: String): BondSimpleDto?
 
+    fun searchBondList(name: String): List<BondSimpleDto>
+
     fun getBondListGroupByGrade(): List<BondRankOutDto>
 
 }
