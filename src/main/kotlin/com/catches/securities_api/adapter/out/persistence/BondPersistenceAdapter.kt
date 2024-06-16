@@ -37,6 +37,27 @@ class BondPersistenceAdapter(
         }
     }
 
+    override fun findBondList(name: String): List<BondSimpleDto> {
+        val likeName = StringBuilder().append("%").append(name).append("%").toString()
+        return bondRepository.findByIsinCodeNameLike(likeName)?.map { bond ->
+            BondSimpleDto(
+                bondName = bond.isinCodeName,
+                surfaceInterestRate = bond.surfaceInterestRate,
+                issuerName = bond.issuer.name,
+                issueDate = bond.issueDate,
+                expiredDate = bond.expiredDate,
+                interestChange = bond.interestChange.name,
+                interestType = bond.interestType.name,
+                price = bond.price?: 0.toBigDecimal(),
+                priceDate = bond.pricedDate.let { date ->
+                    date?.let {
+                        bond.toString()
+                    } ?: ""
+                }
+            )
+        }?: emptyList()
+    }
+
     override fun getBondListGroupByGrade(): List<BondRankInDto> {
         return bondGradeRankRepository.findAllByOrderByGradeAscRankAsc().map {
             BondRankInDto(
