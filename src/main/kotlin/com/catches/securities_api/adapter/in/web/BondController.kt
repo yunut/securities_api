@@ -4,6 +4,7 @@ import com.catches.securities_api.adapter.`in`.web.response.*
 import com.catches.securities_api.application.port.`in`.BondUseCase
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
@@ -24,9 +25,9 @@ data class BondController(
      *  -> 등록도 채권을 먼저 검색하고 등록하도록 만들어야 할것 같다.
      */
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/bond")
+    @GetMapping("/bond/{name}")
     fun getBondList(
-        @RequestParam("name") name: String
+        @PathVariable("name") name: String
     ): ResponseBody {
         val data = bondUseCase.getBondSimpleInfo(name)
 
