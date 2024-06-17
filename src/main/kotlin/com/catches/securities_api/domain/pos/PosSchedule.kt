@@ -1,4 +1,4 @@
-package com.catches.securities_api.domain
+package com.catches.securities_api.domain.pos
 
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
