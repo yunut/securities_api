@@ -8,6 +8,8 @@ import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.PreUpdate
 import jakarta.persistence.Table
+import org.hibernate.annotations.JdbcTypeCode
+import org.hibernate.type.SqlTypes
 import java.math.BigDecimal
 import java.time.LocalDateTime
 import java.util.UUID
@@ -16,9 +18,10 @@ import java.util.UUID
 @Table(name = "user_bond_info")
 data class UserBondInfo(
     @Id
-    @GeneratedValue
-    @Column(name = "id", nullable = false)
-    val id: UUID,
+    @GeneratedValue(generator = "uuid2")
+    @Column(columnDefinition = "VARCHAR(36)")
+    @JdbcTypeCode(SqlTypes.VARCHAR)
+    val id: UUID? = UUID.randomUUID(),
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

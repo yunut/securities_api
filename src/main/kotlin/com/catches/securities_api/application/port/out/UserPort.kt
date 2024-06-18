@@ -4,4 +4,6 @@ import com.catches.securities_api.domain.user.User
 
 interface UserPort {
     fun saveUser(id: String): User
+
+    fun saveUserBond(userId: String, bondId: String)
 }

@@ -11,4 +11,8 @@ class UserService(
     override fun createUser(id: String) {
         userPort.saveUser(id)
     }
+
+    override fun createUserBond(userId: String, bondId: String) {
+        userPort.saveUserBond(userId, bondId)
+    }
 }

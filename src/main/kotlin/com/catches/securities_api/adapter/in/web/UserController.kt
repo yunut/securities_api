@@ -1,5 +1,6 @@
 package com.catches.securities_api.adapter.`in`.web
 
+import com.catches.securities_api.adapter.`in`.web.request.UserBondRCreateRequest
 import com.catches.securities_api.adapter.`in`.web.request.UserCreateRequest
 import com.catches.securities_api.adapter.`in`.web.response.MetaBody
 import com.catches.securities_api.adapter.`in`.web.response.ResponseBody
@@ -28,4 +29,19 @@ class UserController(
             data = null
         )
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/user/bond/create")
+    fun createUserBond(
+        @RequestBody userBond: UserBondRCreateRequest,
+    ): ResponseBody {
+
+        userUseCase.createUserBond(userBond.userId, userBond.bondId)
+
+        return ResponseBody(
+            meta = MetaBody(201, "User created"),
+            data = null
+        )
+    }
+
 }
