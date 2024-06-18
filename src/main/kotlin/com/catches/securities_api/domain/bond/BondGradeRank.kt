@@ -1,4 +1,4 @@
-package com.catches.securities_api.domain
+package com.catches.securities_api.domain.bond
 
 import java.math.BigDecimal
 import java.time.LocalDateTime

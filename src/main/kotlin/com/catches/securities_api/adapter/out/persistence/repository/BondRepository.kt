@@ -1,6 +1,6 @@
 package com.catches.securities_api.adapter.out.persistence.repository
 
-import com.catches.securities_api.domain.Bond
+import com.catches.securities_api.domain.bond.Bond
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

@@ -1,6 +1,6 @@
 package com.catches.securities_api.adapter.out.persistence.repository
 
-import com.catches.securities_api.domain.PosSchedule
+import com.catches.securities_api.domain.pos.PosSchedule
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
