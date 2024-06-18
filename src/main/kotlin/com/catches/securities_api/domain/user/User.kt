@@ -13,12 +13,11 @@ import java.util.UUID
 @Table(name = "user")
 data class User(
     @Id
-    @GeneratedValue
     @Column(name = "id", nullable = false)
-    val id: UUID,
+    val id: String,
 
     @Column(name = "status")
-    var status: String? = null,
+    var status: UserStatus? = UserStatus.INACTIVE,
 
     @Column(name = "created_at", nullable = false)
     var createdAt: LocalDateTime = LocalDateTime.now(),
@@ -30,4 +29,9 @@ data class User(
     fun preUpdate() {
         updatedAt = LocalDateTime.now()
     }
+}
+
+enum class UserStatus {
+    INACTIVE,
+    ACTIVE
 }

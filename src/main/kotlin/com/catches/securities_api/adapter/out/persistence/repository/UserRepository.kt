@@ -1,4 +1,7 @@
 package com.catches.securities_api.adapter.out.persistence.repository
 
-class UserRepository {
+import com.catches.securities_api.domain.user.User
+import org.springframework.data.jpa.repository.JpaRepository
+
+interface UserRepository: JpaRepository<User, String> {
 }
