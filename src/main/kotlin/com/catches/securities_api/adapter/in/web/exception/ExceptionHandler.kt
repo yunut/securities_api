@@ -2,6 +2,7 @@ package com.catches.securities_api.adapter.`in`.web.exception
 
 import com.catches.securities_api.adapter.`in`.web.response.MetaBody
 import com.catches.securities_api.adapter.`in`.web.response.ResponseBody
+import com.catches.securities_api.adapter.out.persistence.exception.NotFoundException
 import jakarta.servlet.http.HttpServletResponse
 import jakarta.validation.ConstraintViolationException
 import org.springframework.http.HttpStatus
@@ -71,6 +72,13 @@ class ExceptionHandler {
     fun handleHttpMessageNotReadableException(e: HttpMessageNotReadableException): ResponseEntity<ResponseBody> {
         val body = ResponseBody(MetaBody(WebErrors.BAD_REQUEST.httpStatus.value(), e.message ?: "No Message"), null)
         return ResponseEntity(body, WebErrors.BAD_REQUEST.httpStatus)
+    }
+
+    @ExceptionHandler(NotFoundException::class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    fun handleNotFoundException(e: NotFoundException): ResponseEntity<ResponseBody> {
+        val body = ResponseBody(MetaBody(WebErrors.NOT_FOUND.httpStatus.value(), e.message ?: "유저 혹은 채권 정보가 존재하지 않습니다."), null)
+        return ResponseEntity(body, WebErrors.NOT_FOUND.httpStatus)
     }
 
 

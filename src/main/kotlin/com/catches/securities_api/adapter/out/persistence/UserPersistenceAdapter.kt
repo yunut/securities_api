@@ -1,5 +1,6 @@
 package com.catches.securities_api.adapter.out.persistence
 
+import com.catches.securities_api.adapter.out.persistence.exception.NotFoundException
 import com.catches.securities_api.adapter.out.persistence.repository.BondRepository
 import com.catches.securities_api.adapter.out.persistence.repository.UserBondInfoRepository
 import com.catches.securities_api.adapter.out.persistence.repository.UserRepository
@@ -31,8 +32,8 @@ class UserPersistenceAdapter(
     @Transactional
     override fun saveUserBond(userId: String, bondId: String) {
 
-        val user = userRepository.findById(userId).getOrNull() ?: throw IllegalArgumentException("User not found")
-        val bond = bondRepository.findById(bondId).getOrNull() ?: throw IllegalArgumentException("Bond not found")
+        val user = userRepository.findById(userId).getOrNull() ?: throw NotFoundException("User not found")
+        val bond = bondRepository.findById(bondId).getOrNull() ?: throw NotFoundException("Bond not found")
         userBondInfoRepository.save(
             UserBondInfo(
                 user = user,
