@@ -19,6 +19,7 @@ class BondPersistenceAdapter(
         return bondRepository.findByIsinCodeNameLike(likeName)?.firstOrNull().let { bond ->
             bond?.let {
                 BondSimpleDto(
+                    bondId = it.isinCode,
                     bondName = it.isinCodeName,
                     surfaceInterestRate = it.surfaceInterestRate,
                     issuerName = it.issuer.name,
@@ -41,6 +42,7 @@ class BondPersistenceAdapter(
         val likeName = StringBuilder().append("%").append(name).append("%").toString()
         return bondRepository.findByIsinCodeNameLike(likeName)?.map { bond ->
             BondSimpleDto(
+                bondId = bond.isinCode,
                 bondName = bond.isinCodeName,
                 surfaceInterestRate = bond.surfaceInterestRate,
                 issuerName = bond.issuer.name,
