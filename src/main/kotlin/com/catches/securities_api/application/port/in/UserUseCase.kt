@@ -8,4 +8,6 @@ interface UserUseCase {
     fun createUserBond(userId: String, bondId: String)
 
     fun getUserBondList(userId: String): List<BondSimpleDto>
+
+    fun deleteUserBond(userId: String, bondId: String)
 }

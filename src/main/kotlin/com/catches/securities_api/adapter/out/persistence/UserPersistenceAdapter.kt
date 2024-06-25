@@ -66,4 +66,13 @@ class UserPersistenceAdapter(
         }?: emptyList()
     }
 
+    @Transactional
+    override fun deleteUserBond(userId: String, bondId: String) {
+        try{
+            userBondInfoRepository.deleteByUserIdAndBondId(userId = userId, bondId = bondId)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
 }

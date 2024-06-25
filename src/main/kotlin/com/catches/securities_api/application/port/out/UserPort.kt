@@ -9,4 +9,6 @@ interface UserPort {
     fun saveUserBond(userId: String, bondId: String)
 
     fun getUserBondList(userId: String): List<BondSimpleDto>
+
+    fun deleteUserBond(userId: String, bondId: String)
 }

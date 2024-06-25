@@ -4,7 +4,7 @@ data class UserCreateRequest(
     val id: String
 )
 
-data class UserBondRCreateRequest(
+data class UserBondCreateRequest(
     val userId: String,
     val bondId: String
 )

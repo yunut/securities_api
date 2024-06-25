@@ -1,12 +1,13 @@
 package com.catches.securities_api.adapter.`in`.web
 
-import com.catches.securities_api.adapter.`in`.web.request.UserBondRCreateRequest
+import com.catches.securities_api.adapter.`in`.web.request.UserBondCreateRequest
 import com.catches.securities_api.adapter.`in`.web.request.UserCreateRequest
 import com.catches.securities_api.adapter.`in`.web.response.BondResponse
 import com.catches.securities_api.adapter.`in`.web.response.MetaBody
 import com.catches.securities_api.adapter.`in`.web.response.ResponseBody
 import com.catches.securities_api.application.port.`in`.UserUseCase
 import org.springframework.http.HttpStatus
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -63,13 +64,28 @@ class UserController(
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/user/bond/create")
     fun createUserBond(
-        @RequestBody userBond: UserBondRCreateRequest,
+        @RequestBody userBond: UserBondCreateRequest,
     ): ResponseBody {
 
         userUseCase.createUserBond(userBond.userId, userBond.bondId)
 
         return ResponseBody(
             meta = MetaBody(201, "User created"),
+            data = null
+        )
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/user/bond")
+    fun deleteUserBond(
+        @RequestParam("userId") userId: String,
+        @RequestParam("bondId") bondId: String
+    ): ResponseBody {
+
+        userUseCase.deleteUserBond(userId, bondId)
+
+        return ResponseBody(
+            meta = MetaBody(200, "Success"),
             data = null
         )
     }
