@@ -1,5 +1,6 @@
 package com.catches.securities_api.domain.user
 
+import com.catches.securities_api.domain.bond.Bond
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -27,8 +28,9 @@ data class UserBondInfo(
     @JoinColumn(name = "user_id", nullable = false)
     var user: User,
 
-    @Column(name = "bond_id", nullable = false)
-    var bondId: String,
+    @ManyToOne
+    @JoinColumn(name = "bond_id", nullable = false)
+    var bond: Bond,
 
     @Column(name = "bond_rate", nullable = false)
     var bondRate: BigDecimal,
