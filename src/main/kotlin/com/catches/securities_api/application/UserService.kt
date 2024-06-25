@@ -20,4 +20,8 @@ class UserService(
     override fun getUserBondList(userId: String): List<BondSimpleDto> {
         return userPort.getUserBondList(userId)
     }
+
+    override fun deleteUserBond(userId: String, bondId: String) {
+        return userPort.deleteUserBond(userId, bondId)
+    }
 }
