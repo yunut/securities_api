@@ -25,6 +25,7 @@ data class BondController(
             meta = MetaBody(200, "Success"),
             data = data?.let {
                 BondResponse(
+                    bondId = it.bondId,
                     bondName = it!!.bondName,
                     surfaceInterestRate = it.surfaceInterestRate.setScale(2, RoundingMode.DOWN).toDouble(),
                     issuerName = it.issuerName,
@@ -50,6 +51,7 @@ data class BondController(
             meta = MetaBody(200, "Success"),
             data = data.map {
                 BondResponse(
+                    bondId = it.bondId,
                     bondName = it!!.bondName,
                     surfaceInterestRate = it.surfaceInterestRate.setScale(2, RoundingMode.DOWN).toDouble(),
                     issuerName = it.issuerName,

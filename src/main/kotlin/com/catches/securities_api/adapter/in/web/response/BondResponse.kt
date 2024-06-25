@@ -1,9 +1,7 @@
 package com.catches.securities_api.adapter.`in`.web.response
 
-import java.math.BigDecimal
-import java.time.LocalDate
-
 data class BondResponse(
+    val bondId: String, // 채권 ID
     val bondName: String, // 채권명
     val surfaceInterestRate: Double, // 표면 이자율
     val issuerName: String, // 발행기관

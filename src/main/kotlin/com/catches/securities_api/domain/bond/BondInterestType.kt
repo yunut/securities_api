@@ -1,10 +1,10 @@
-package com.catches.securities_api.domain
+package com.catches.securities_api.domain.bond
 
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "bond_interest_change")
-data class BondInterestChange(
+@Table(name = "bond_interest_type")
+class BondInterestType(
     @Id
     @Column(name = "code", length = 1, nullable = false)
     var code: String,
