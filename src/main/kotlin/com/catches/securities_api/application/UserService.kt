@@ -1,6 +1,7 @@
 package com.catches.securities_api.application
 
 import com.catches.securities_api.application.port.`in`.UserUseCase
+import com.catches.securities_api.application.port.`in`.dto.BondSimpleDto
 import com.catches.securities_api.application.port.out.UserPort
 import org.springframework.stereotype.Service
 
@@ -14,5 +15,9 @@ class UserService(
 
     override fun createUserBond(userId: String, bondId: String) {
         userPort.saveUserBond(userId, bondId)
+    }
+
+    override fun getUserBondList(userId: String): List<BondSimpleDto> {
+        return userPort.getUserBondList(userId)
     }
 }

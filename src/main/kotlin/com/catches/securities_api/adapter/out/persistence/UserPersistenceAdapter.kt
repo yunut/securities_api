@@ -4,6 +4,7 @@ import com.catches.securities_api.adapter.out.persistence.exception.NotFoundExce
 import com.catches.securities_api.adapter.out.persistence.repository.BondRepository
 import com.catches.securities_api.adapter.out.persistence.repository.UserBondInfoRepository
 import com.catches.securities_api.adapter.out.persistence.repository.UserRepository
+import com.catches.securities_api.application.port.`in`.dto.BondSimpleDto
 import com.catches.securities_api.application.port.out.UserPort
 import com.catches.securities_api.domain.user.User
 import com.catches.securities_api.domain.user.UserBondInfo
@@ -37,11 +38,32 @@ class UserPersistenceAdapter(
         userBondInfoRepository.save(
             UserBondInfo(
                 user = user,
-                bondId = bond.isinCode,
+                bond = bond,
                 bondRate = bond.surfaceInterestRate,
                 bondAmount = bond.price,
             )
         )
+    }
+
+    override fun getUserBondList(userId: String): List<BondSimpleDto> {
+        return userBondInfoRepository.findBondDetailByUserId(userId)?.map {
+            BondSimpleDto(
+                bondId = it.bond.isinCode,
+                bondName = it.bond.isinCodeName,
+                surfaceInterestRate = it.bond.surfaceInterestRate,
+                issuerName = it.bond.issuer.name,
+                issueDate = it.bond.issueDate,
+                expiredDate = it.bond.expiredDate,
+                interestChange = it.bond.interestChange.name,
+                interestType = it.bond.interestType.name,
+                price = it.bond.price?: 0.toBigDecimal(),
+                priceDate = it.bond.pricedDate.let { date ->
+                    date?.let {
+                        it.toString()
+                    } ?: ""
+                }
+            )
+        }?: emptyList()
     }
 
 }

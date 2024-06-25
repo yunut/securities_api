@@ -53,7 +53,7 @@ class BondPersistenceAdapter(
                 price = bond.price?: 0.toBigDecimal(),
                 priceDate = bond.pricedDate.let { date ->
                     date?.let {
-                        bond.toString()
+                        it.toString()
                     } ?: ""
                 }
             )
