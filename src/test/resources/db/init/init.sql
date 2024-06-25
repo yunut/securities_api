@@ -59,6 +59,7 @@ CREATE TABLE user_bond_info(
     bond_amount DECIMAL(10,2),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY (user_id, bond_id),
     FOREIGN KEY(user_id) REFERENCES user(id),
     FOREIGN KEY(bond_id) REFERENCES bond(isin_code)
 );
