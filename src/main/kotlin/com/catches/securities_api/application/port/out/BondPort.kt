@@ -5,7 +5,7 @@ import com.catches.securities_api.application.port.`in`.dto.BondSimpleDto
 
 interface BondPort {
 
-    fun getBondSimpleInfo(name: String): BondSimpleDto?
+    fun getBondDetailInfo(code: String): BondSimpleDto?
 
     fun findBondList(name: String): List<BondSimpleDto>
 
