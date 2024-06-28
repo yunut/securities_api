@@ -4,6 +4,7 @@ import com.catches.securities_api.adapter.`in`.web.response.*
 import com.catches.securities_api.application.port.`in`.BondUseCase
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
@@ -15,28 +16,15 @@ data class BondController(
 ) {
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/bond")
+    @GetMapping("/bond/{code}")
     fun getBondList(
-        @RequestParam("name") name: String
+        @PathVariable code: String
     ): ResponseBody {
-        val data = bondUseCase.getBondSimpleInfo(name)
+        val data = bondUseCase.getBondDetailInfo(code)
 
         return ResponseBody(
             meta = MetaBody(200, "Success"),
-            data = data?.let {
-                BondResponse(
-                    bondId = it.bondId,
-                    bondName = it!!.bondName,
-                    surfaceInterestRate = it.surfaceInterestRate.setScale(2, RoundingMode.DOWN).toDouble(),
-                    issuerName = it.issuerName,
-                    issueDate = it.issueDate.toString(),
-                    expiredDate = it.expiredDate.toString(),
-                    interestChange = it.interestChange,
-                    interestType = it.interestType,
-                    price = it.price.toInt(),
-                    priceDate = it.priceDate
-                )
-            }
+            data = data
         )
     }
 

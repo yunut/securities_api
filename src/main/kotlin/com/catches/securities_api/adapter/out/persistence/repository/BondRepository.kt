@@ -9,4 +9,5 @@ interface BondRepository: JpaRepository<Bond, String> {
 
     fun findByIsinCodeNameLike(name: String): List<Bond>?
 
+    fun findByIsinCode(code: String): Bond?
 }
